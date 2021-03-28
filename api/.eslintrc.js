@@ -6,12 +6,14 @@ module.exports = {
     },
     extends: [
         'airbnb-base',
+        "eslint:recommended"
     ],
     parserOptions: {
         ecmaVersion: 12,
     },
     rules: {
-        /*eslint linebreak-style: ["error", "unix"]*/
-        /*eslint linebreak-style: ["error", "windows"]*/
+        "linebreak-style": ["error", "windows"]
+            /*eslint linebreak-style: ["error", "unix"]*/
+            /*eslint linebreak-style: ["error", "windows"]*/
     },
 };
