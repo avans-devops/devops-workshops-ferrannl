@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  frontend:
+    build: ./frontend
+    environment: 
+      - SERVERNAME=first
+      - PORT=5001
+  api:
+    build: ./api
+    environment: 
+      - SERVERNAME=second
+      - PORT=5002
+  servicebus:
+    image: nginx:latest
+    container_name: servicebus
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+     - 8080:80
+    depends_on: 
+      - api
+      - frontend
