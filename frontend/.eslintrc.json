@@ -1,4 +1,9 @@
 {
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
   "root": true,
   "ignorePatterns": [
     "projects/**/*"
@@ -13,6 +18,7 @@
           "tsconfig.json",
           "e2e/tsconfig.json"
         ],
+        "ecmaVersion": 2017,
         "createDefaultProgram": true
       },
       "extends": [
