@@ -42,7 +42,7 @@ export class ValidationService {
       return { invalidMobile: true };
     }
   }
-  MustMatch(controlName: string, matchingControlName: string): any {
+  mustMatch(controlName: string, matchingControlName: string): any {
     return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];
       const matchingControl = formGroup.controls[matchingControlName];
