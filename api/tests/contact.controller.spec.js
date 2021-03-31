@@ -24,7 +24,6 @@ describe('ContactController', () => {
         expect(res.body.data).toHaveLength(0);
         done();
     });
-    console.log("ewa")
 
     it('should create contact', async(done) => {
         const firstName = 'henk';
