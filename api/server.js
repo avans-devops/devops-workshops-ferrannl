@@ -11,9 +11,18 @@ const bodyParser = require('body-parser');
 const expressJwt = require('express-jwt');
 // Import Mongoose
 const mongoose = require('mongoose');
-
+const promBundle = require('express-prom-bundle');
 const environment = require('./config/environment');
 
+const metricsMiddleware = promBundle({
+    includePath: true,
+    includeStatusCode: true,
+    normalizePath: true,
+    promClient: {
+        collectDefaultMetrics: {}
+    }
+});
+app.use(metricsMiddleware);
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -68,7 +77,7 @@ app.use(
             }
             return null;
         }
-    }).unless({ path: ['/api/user/authenticate', '/api/users', '/index.html'] })
+    }).unless({ path: ['/api/user/authenticate', '/api/users', '/index.html', '/metrics'] })
 );
 
 // Use Api routes in the App
@@ -85,7 +94,7 @@ app.get('*', (req, res) => {
 const HOST = '0.0.0.0';
 // start server
 // Launch app to listen to specified port
-const server = app.listen(process.env.EXPRESS_PORT || 3000, HOST, () => {
+const server = app.listen(process.env.EXPRESS_PORT || 5000, HOST, () => {
     const PORT = server.address().port;
     console.log(`Running  on http://${HOST}:${PORT}`);
 });
