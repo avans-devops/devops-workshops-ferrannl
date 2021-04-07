@@ -24,3 +24,7 @@ jobs:
       - run: npm run build --if-present
       - run: yarn run eslint
       - run: npm test
+
+# omgevingsvariabelen
+# label workflow statussen
+# is stap 1 van 12 factor app, codebase
