@@ -94,7 +94,3 @@ volumes:
 networks:
   backend:
   frontend:
-
-    # netwerken
-    # data opslag dmv db met volume
-    # 

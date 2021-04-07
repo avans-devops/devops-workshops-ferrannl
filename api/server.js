@@ -11,10 +11,9 @@ const bodyParser = require('body-parser');
 const expressJwt = require('express-jwt');
 // Import Mongoose
 const mongoose = require('mongoose');
-
-// Continuous monitoring, metrics, data Prometheus
 const promBundle = require('express-prom-bundle');
 const environment = require('./config/environment');
+
 const metricsMiddleware = promBundle({
     includePath: true,
     includeStatusCode: true,
@@ -24,7 +23,6 @@ const metricsMiddleware = promBundle({
     }
 });
 app.use(metricsMiddleware);
-
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
